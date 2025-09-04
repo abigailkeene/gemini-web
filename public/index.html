@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gemini – Prompt Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-2: #a78bfa;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #1f2937 0%, var(--bg) 40%, #0b1022 100%);
+      color: var(--text);
+      display: grid; min-height: 100dvh; place-items: center; padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 760px; background: linear-gradient(180deg, #0b1022 0%, #0a0f1d 100%);
+      border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.45);
+    }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    .sub { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+    textarea {
+      width: 100%; min-height: 110px; resize: vertical;
+      background: #0b1022; color: var(--text); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px; font-size: 14px; outline: none;
+    }
+    .row { display: flex; gap: 12px; margin-top: 12px; }
+    button {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white; border: none; border-radius: 12px; padding: 10px 16px;
+      font-weight: 600; cursor: pointer;
+    }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .out {
+      margin-top: 16px; border: 1px solid var(--border); border-radius: 12px; padding: 12px;
+      background: #0a0f1d; min-height: 100px; white-space: pre-wrap; line-height: 1.5;
+    }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; color: #cbd5e1; }
+    .footer {
+      margin-top: 10px; font-size: 12px; color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Gemini Prompt Console</h1>
+    <p class="sub">Type a prompt below. Your API key stays on the server—never in the browser.</p>
+
+    <textarea id="prompt" placeholder="e.g., Give me a fun 1–2 sentence fact about galaxies."></textarea>
+    <div class="row">
+      <button id="send">Send to Gemini</button>
+      <span id="status" class="mono"></span>
+    </div>
+    <div id="output" class="out"></div>
+    <div class="footer">Tip: Try different styles like “explain step-by-step” or “summarize in bullet points”.</div>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
